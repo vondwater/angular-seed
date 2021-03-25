@@ -6,7 +6,7 @@ import 'view1/view1';
 import 'view2/view2';
 
 // Declare app level module which depends on views, and core components
-let app = angular.module('myApp', [
+angular.module('myApp', [
   'ngRoute',
   'myApp.core',
   'myApp.view1',
@@ -18,4 +18,4 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
-// export app;
+// angular.bootstrap(document, ['myApp']);

@@ -1,4 +1,3 @@
-// import 'angular';
 // import {singleSpaAngularjs} from 'single-spa-angularjs';
 
 System.register(['angular'], function (_export) {
@@ -14,3 +13,5 @@ System.register(['angular'], function (_export) {
 		}
 	}
 });
+
+System.import('app-regs');
