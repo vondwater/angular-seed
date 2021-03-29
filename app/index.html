@@ -16,27 +16,27 @@
   <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="lib/single-spa-angularjs/lib/single-spa-angularjs.js"></script>
+  <!-- <script src="lib/single-spa-angularjs/lib/single-spa-angularjs.js"></script> -->
   <script type="systemjs-importmap">
     {
       "imports": {   
         "app-regs": "./root-config.js",     
         "@abi/app": "/app.js",        
-        "core": "/core/core.js",
+        "core": "/core/core",
         "@abi/my-app": "/core/my-app.directive.js",
         "core/version": "/core/version/version.js",
         "core/version-directive": "/core/version/version-directive.js",
         "core/version/interpolate-filter": "/core/version/interpolate-filter.js",
         "view1/view1": "/view1/view1.js",
         "view2/view2": "/view2/view2.js",
-        "single-spa": "//localhost:8000/lib/single-spa/lib/system/single-spa.dev.js",
+        "single-spa": "//localhost:8080/lib/single-spa/lib/system/single-spa.dev.js",
         "single-spa-angularjs": "/lib/single-spa-angularjs/lib/single-spa-angularjs.js",
-        "single-spa-application": "//localhost:8000/single-spa-application.js",
-        "angular": "//localhost:8000/lib/angular/angular.js",
-        "angular-route": "//localhost:8000/lib/angular-route/angular-route.js",
-        "plugin-babel": "//localhost:8000/lib/systemjs-plugin-babel/plugin-babel.js",
-        "systemjs-babel-build": "//localhost:8000/lib/systemjs-plugin-babel/systemjs-babel-browser.js",
-        "systemjs-babel": "//localhost:8000/lib/systemjs-babel/dist/systemjs-babel.js"
+        "single-spa-application": "/single-spa-application.js",
+        "angular": "//localhost:8080/lib/angular/angular.js",
+        "angular-route": "//localhost:8080/lib/angular-route/angular-route.js",
+        "plugin-babel": "//localhost:8080/lib/systemjs-plugin-babel/plugin-babel.js",
+        "systemjs-babel-build": "//localhost:8080/lib/systemjs-plugin-babel/systemjs-babel-browser.js",
+        "systemjs-babel": "//localhost:8080/lib/systemjs-babel/dist/systemjs-babel.js"
       }
     }
   </script>
@@ -50,7 +50,7 @@
       }
     }
   </script>
-  <script type="systemjs-module" src="single-spa-application.js"></script>
+  <!-- <script src="single-spa-application.js"></script> -->
   <script src="lib/systemjs/dist/system.js"></script>
   <!-- <script src="lib/systemjs/dist/extras/amd.js"></script> -->
   <!-- <script src="lib/systemjs/dist/extras/transform.js"></script> -->
@@ -59,6 +59,9 @@
   <!-- <script src="lib/systemjs/dist/extras/named-exports.js"></script> -->
   <!-- <script src="lib/systemjs/dist/extras/use-default.js"></script> -->
   <script src="lib/systemjs-babel/dist/systemjs-babel.js"></script>
+  <script>
+    System.import('single-spa-angularjs').then(() => System.import('single-spa-application').then(() => System.import('app-regs')));
+  </script>
 </body>
 
 </html>

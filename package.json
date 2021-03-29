@@ -13,20 +13,33 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.7.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.1.0",
     "cpx": "^1.5.0",
+    "css-loader": "^5.2.0",
+    "html-webpack-plugin": "^5.3.1",
     "http-server": "^0.11.1",
     "jasmine-core": "^3.3.0",
     "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^1.1.2",
+    "mini-css-extract-plugin": "^1.4.0",
+    "postcss-loader": "^5.2.0",
     "protractor": "^5.4.1",
+    "raw-loader": "^4.0.2",
     "single-spa": "^5.9.2",
     "single-spa-angularjs": "^4.2.2",
+    "style-loader": "^2.0.0",
     "systemjs": "^6.8.3",
     "systemjs-babel": "^0.3.1",
     "systemjs-plugin-babel": "^0.0.25",
-    "typescript": "^4.2.3"
+    "systemjs-webpack-interop": "^2.3.6",
+    "typescript": "^4.2.3",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
     "postinstall": "npm run copy-libs",
@@ -34,7 +47,6 @@
     "postupdate-deps": "npm run copy-libs",
     "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist,systemjs*,babel*,single-spa*,plugin-babel*}/**/*\" app/lib -C",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "npm test -- --single-run",
@@ -43,6 +55,9 @@
     "update-webdriver": "webdriver-manager update --gecko false",
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor e2e-tests/protractor.conf.js",
-    "update-index-async": "node --eval \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/lib/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=lib/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+    "update-index-async": "node --eval \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/lib/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=lib/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\"",
+    "server": "webpack serve --inline --progress",
+    "build": "webpack --bail --progress --profile",
+    "start": "npm run server"
   }
 }
