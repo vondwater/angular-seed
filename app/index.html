@@ -30,7 +30,7 @@
         "view1/view1": "/view1/view1.js",
         "view2/view2": "/view2/view2.js",
         "single-spa": "//localhost:8080/lib/single-spa/lib/system/single-spa.dev.js",
-        "single-spa-angularjs": "/lib/single-spa-angularjs/lib/single-spa-angularjs.js",
+        "single-spa-angularjs": "/lib/single-spa-angularjs/src/single-spa-angularjs.js",
         "single-spa-application": "/single-spa-application.js",
         "angular": "//localhost:8080/lib/angular/angular.js",
         "angular-route": "//localhost:8080/lib/angular-route/angular-route.js",
@@ -43,13 +43,6 @@
 </head>
 
 <body>
-  <script type="systemjs-packagemap">
-    {
-      "app":{
-        "main":"app.js",
-      }
-    }
-  </script>
   <!-- <script src="single-spa-application.js"></script> -->
   <script src="lib/systemjs/dist/system.js"></script>
   <!-- <script src="lib/systemjs/dist/extras/amd.js"></script> -->

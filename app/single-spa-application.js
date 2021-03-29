@@ -1,9 +1,11 @@
-import * as singleSpaAngularJS from 'single-spa-angularjs';
-import angular from 'angular';
+import singleSpaAngularJS from 'single-spa-angularjs';
+import 'angular';
 // import "systemjs-webpack-interop/auto-public-path";
 
+console.log('singleSpaAngularJS', singleSpaAngularJS)
+
 const ngLifecycles = singleSpaAngularJS({
-  angular: angular,
+  angular: window.angular,
   mainAngularModule: 'myApp',
   uiRouter: true,
   preserveGlobal: false,
